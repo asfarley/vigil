@@ -1,7 +1,7 @@
 vigil
 -----
 
-Vigil is a simple Windows desktop GUI for displaying an image file which updates when the image file is updated. 
+Vigil is a simple Windows photo viewer which updates when the image file is updated. 
 
 Launch vigil by double-clicking `vigil.exe` and drop your image file on to the UI. vigil can also be launched through the command line:
 

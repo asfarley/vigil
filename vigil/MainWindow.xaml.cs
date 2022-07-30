@@ -24,10 +24,26 @@ namespace vigil
     {
         FileSystemWatcher watcher;
 
-        private string imagePath = "";
+        public string imagePath = "";
+
         public MainWindow()
         {
             InitializeComponent();
+
+            if(((App) App.Current).imagePath != "")
+            {
+                imagePath = ((App)App.Current).imagePath;
+                try
+                {
+                    MainImage.Source = LoadBitmapImage(imagePath);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                CreateFileWatcher(imagePath);
+            }
         }
 
         private void MainImage_Drop(object sender, DragEventArgs e)
@@ -136,6 +152,18 @@ namespace vigil
             }
 
             return null;
+        }
+    }
+    public partial class App : Application
+    {
+        public string imagePath = "";
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            foreach (string arg in e.Args)
+            {
+                imagePath = arg;
+            }
+            base.OnStartup(e);
         }
     }
 }

@@ -8,4 +8,7 @@ Launch vigil by double-clicking `vigil.exe` and drop your image file on to the U
 ```vigil.exe image.bmp```
 
 No install needed, just unzip the folder containing the executable.
+
+
+
 [download](https://github.com/asfarley/vigil/raw/master/releases/1.0.1.zip)

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vigil", "vigil\vigil.csproj", "{351876B8-DAFD-42C6-906E-04955974699A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{351876B8-DAFD-42C6-906E-04955974699A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351876B8-DAFD-42C6-906E-04955974699A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351876B8-DAFD-42C6-906E-04955974699A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351876B8-DAFD-42C6-906E-04955974699A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D371D32-B704-403B-96A2-931F7A7F539F}
+	EndGlobalSection
+EndGlobal

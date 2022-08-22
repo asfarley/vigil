@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Reflection;
 
 namespace vigil
 {
@@ -25,6 +26,12 @@ namespace vigil
         FileSystemWatcher watcher;
 
         public string imagePath = "";
+
+        public string rootPath;
+
+        public List<string> imagePaths = new List<string>();
+
+        public int index = 0;
 
         public MainWindow()
         {
@@ -51,16 +58,24 @@ namespace vigil
             // If the DataObject contains string data, extract it.
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string[] droppedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
 
 
-                imagePath = files[0];
+                imagePath = droppedFiles[0];
 
                 try
                 {
                     MainImage.Source = LoadBitmapImage(imagePath);
+                    rootPath = System.IO.Path.GetDirectoryName(imagePath);
+                    //imagePaths = Directory.GetFiles(rootPath, "*.bmp|*.png|*.jpg|*.jpeg").ToList();
+                    //imagePaths = Directory.GetFiles(rootPath, "*.png").ToList();
+
+                    string supportedExtensions = "*.jpg,*.gif,*.png,*.bmp,*.jpe,*.jpeg,*.wmf,*.emf,*.xbm,*.ico,*.eps,*.tif,*.tiff,*.g01,*.g02,*.g03,*.g04,*.g05,*.g06,*.g07,*.g08";
+                    imagePaths = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories).Where(s => supportedExtensions.Contains(System.IO.Path.GetExtension(s).ToLower())).ToList();
+
+                    index = imagePaths.IndexOf(imagePath);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -152,6 +167,36 @@ namespace vigil
             }
 
             return null;
+        }
+
+        private void OnLeft(object sender, ExecutedRoutedEventArgs e)
+        {
+            if(index > 0)
+            {
+                index--;
+            }
+            else
+            {
+                index = imagePaths.Count - 1;
+            }
+            
+            imagePath = imagePaths[index];
+            MainImage.Source = LoadBitmapImage(imagePath);
+        }
+
+        private void OnRight(object sender, ExecutedRoutedEventArgs e)
+        {
+            if(index < imagePaths.Count - 1)
+            {
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
+            
+            imagePath = imagePaths[index];
+            MainImage.Source = LoadBitmapImage(imagePath);
         }
     }
     public partial class App : Application

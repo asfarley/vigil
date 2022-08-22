@@ -6,6 +6,18 @@
         xmlns:local="clr-namespace:vigil"
         mc:Ignorable="d"
         Title="vigil" Height="450" Width="800" AllowDrop="True" Drop="MainImage_Drop">
+    <Window.Resources>
+        <RoutedCommand x:Key="OnLeftCommand"></RoutedCommand>
+        <RoutedCommand x:Key="OnRightCommand"></RoutedCommand>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource OnLeftCommand}" Executed="OnLeft"></CommandBinding>
+        <CommandBinding Command="{StaticResource OnRightCommand}" Executed="OnRight"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="Left" Command="{StaticResource OnLeftCommand}"></KeyBinding>
+        <KeyBinding Key="Right" Command="{StaticResource OnRightCommand}"></KeyBinding>
+    </Window.InputBindings>
     <Grid>
         <Image Name="MainImage" ></Image>
     </Grid>
